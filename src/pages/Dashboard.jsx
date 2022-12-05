@@ -13,10 +13,11 @@ const Dashboard = () => {
     origin: null,
   });
   const [inbox, setInbox] = useState(null);
+  const [posts, setPosts] = useState(null);
 
   const value = {
-    state: { user, popup, inbox },
-    actions: { setUser, setPopup, setInbox },
+    state: { user, popup, inbox, posts },
+    actions: { setUser, setPopup, setInbox, setPosts },
   };
 
   useEffect(() => {
@@ -35,6 +36,7 @@ const Dashboard = () => {
 
       if (data.status == "success") {
         setUser(data.data);
+        setPosts(data.posts);
       }
     };
 

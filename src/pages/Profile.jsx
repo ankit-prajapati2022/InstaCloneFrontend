@@ -1,5 +1,6 @@
 import "./css/Profile.css";
 import Footer from "../components/Footer";
+import ProfilePost from "../components/ProfilePost";
 import {
   DownArrow,
   Settings,
@@ -21,6 +22,7 @@ const Profile = () => {
   const { state, actions } = useContext(UserContext);
 
   const user = state.user;
+  const posts = state.posts;
 
   const location = useLocation();
 
@@ -241,7 +243,16 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <div className="profile_posts">Getting Started</div>
+      <div className="profile_posts">
+        <div>
+          {posts && posts.length > 0 ? (
+            <ProfilePost posts={posts} />
+          ) : (
+            <h2>No posts yet</h2>
+          )}
+          {console.log(posts)}
+        </div>
+      </div>
       <Footer />
     </div>
   );
